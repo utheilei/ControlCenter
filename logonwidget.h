@@ -1,12 +1,13 @@
 #ifndef LOGONWIDGET_H
 #define LOGONWIDGET_H
 
-#include <DWidget>
-#include <DLineEdit>
+#include <DDialog>
 
 DWIDGET_USE_NAMESPACE
 
-class LogonWidget : public DWidget
+class QLineEdit;
+
+class LogonWidget : public DDialog
 {
     Q_OBJECT
 public:
@@ -15,10 +16,11 @@ public:
 signals:
 
 public slots:
+    void openUrl();
 
 private:
-    DLineEdit *m_edit;
-    DLineEdit *m_edit1;
+    QLineEdit *m_edit;
+    QLineEdit *m_edit1;
 };
 
 #endif // LOGONWIDGET_H

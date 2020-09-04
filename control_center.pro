@@ -69,3 +69,5 @@ HEADERS += \
     widgets/displaytime.h
 
 TRANSLATIONS = control_center_zh_CN.ts
+
+DISTFILES +=

@@ -6,11 +6,12 @@
 #include <DCommandLinkButton>
 #include <QBoxLayout>
 #include <DPushButton>
+#include <QLineEdit>
+#include <QDesktopServices>
+#include <QUrl>
 
-LogonWidget::LogonWidget(QWidget *parent) : DWidget(parent)
+LogonWidget::LogonWidget(QWidget *parent) : DDialog(parent)
 {
-//     edit = new QLineEdit(this);
-//     QAction *action = edit->addAction(QIcon(":/images/images6.png"),QLineEdit::LeadingPosition);
     DLabel *label = new DLabel(this);
     label->setPixmap(QPixmap(":/images/images5.png"));
 
@@ -18,21 +19,29 @@ LogonWidget::LogonWidget(QWidget *parent) : DWidget(parent)
     DFontSizeManager::instance()->bind(label1, DFontSizeManager::T3, QFont::DemiBold);
     label1->setText(tr("网络账户登录"));
 
-    m_edit = new DLineEdit(this);
-    m_edit->lineEdit()->setPlaceholderText(tr("用户名/邮箱/手机号"));
-    m_edit1 = new DLineEdit(this);
-    m_edit1->lineEdit()->setPlaceholderText(tr("密码"));
+    m_edit = new QLineEdit(this);
+    m_edit->setPlaceholderText(tr("用户名/邮箱/手机号"));
+    m_edit->addAction(QIcon::fromTheme("dcc_acount"),QLineEdit::LeadingPosition);
+    m_edit1 = new QLineEdit(this);
+    m_edit1->setPlaceholderText(tr("密码"));
+    m_edit1->addAction(QIcon::fromTheme("dcc_lock"),QLineEdit::LeadingPosition);
 
     QHBoxLayout *hlayout = new QHBoxLayout;
-    DCommandLinkButton *registerbtn = new DCommandLinkButton(tr("注册"),this);
-    DCommandLinkButton *btn = new DCommandLinkButton(tr("忘记密码？"),this);
-    hlayout->addWidget(registerbtn);
-    hlayout->addWidget(btn);
+    DCommandLinkButton *registerBtn = new DCommandLinkButton(tr("注册"),this);
+    registerBtn->setObjectName("registerBtn");
+    DCommandLinkButton *passwdBtn = new DCommandLinkButton(tr("忘记密码？"),this);
+    passwdBtn->setObjectName("passwdBtn");
+    connect(registerBtn, &DCommandLinkButton::clicked, this, &LogonWidget::openUrl);
+    connect(passwdBtn, &DCommandLinkButton::clicked, this, &LogonWidget::openUrl);
+
+    hlayout->addWidget(registerBtn);
+    hlayout->addWidget(passwdBtn);
 
     DPushButton *logbtn = new DPushButton(tr("登录"),this);
 
+    QWidget *contentWidget = new QWidget(this);
     QVBoxLayout *vlayout = new QVBoxLayout;
-    this->setLayout(vlayout);
+    contentWidget->setLayout(vlayout);
     vlayout->setContentsMargins(30,20,30,20);
     vlayout->addWidget(label);
     vlayout->setAlignment(label,Qt::AlignHCenter);
@@ -44,4 +53,20 @@ LogonWidget::LogonWidget(QWidget *parent) : DWidget(parent)
     vlayout->setAlignment(hlayout,Qt::AlignRight);
     vlayout->addStretch();
     vlayout->addWidget(logbtn);
+
+    addContent(contentWidget);
+}
+
+void LogonWidget::openUrl()
+{
+    QString url = "";
+    DCommandLinkButton *btn = qobject_cast<DCommandLinkButton *>(sender());
+
+    if ("registerBtn" == btn->objectName()) {
+         url = "https://account.chinauos.com/register?lang=zh";
+    } else if ("passwdBtn" == btn->objectName()) {
+         url = "https://account.chinauos.com/register/support?lang=zh";
+    }
+
+    QDesktopServices::openUrl(QUrl(url));
 }

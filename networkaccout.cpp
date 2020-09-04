@@ -34,7 +34,6 @@ NetworkAccout::NetworkAccout(QWidget *parent) : QWidget(parent)
 
     QVBoxLayout *vlayout = new QVBoxLayout;
     this->setLayout(vlayout);
-    //vlayout->setContentsMargins(5,100,5,150);
     vlayout->addStretch();
     vlayout->addWidget(label);
     vlayout->setAlignment(label,Qt::AlignHCenter);
@@ -48,13 +47,10 @@ NetworkAccout::NetworkAccout(QWidget *parent) : QWidget(parent)
     vlayout->setAlignment(label3,Qt::AlignHCenter);
     vlayout->addStretch();
 
-    LogonWidget *logon = new LogonWidget;
-    logon->setFixedSize(360,400);
-    logon->move(QApplication::desktop()->screen()->rect().center() - logon->rect().center());
-    logon->hide();
-    logon->setWindowTitle(tr("登录"));
-
     connect(creatbtn,&DSuggestButton::clicked,[=](){
-        logon->show();
+        LogonWidget logon;
+        logon.setFixedSize(360,440);
+        logon.moveToCenter();
+        logon.exec();
     });
 }

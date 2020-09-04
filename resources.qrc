@@ -81,5 +81,9 @@
         <file>images/dcc_noun_minute.svg</file>
         <file>images/dcc_noun_second.svg</file>
         <file>images/dcc_clock_black.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_acount_16px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_lock_16px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_acount_16px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_lock_16px.svg</file>
     </qresource>
 </RCC>
