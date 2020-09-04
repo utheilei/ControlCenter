@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <linearGradient id="error-c" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF674A"/>
+      <stop offset="100%" stop-color="#EC5783"/>
+    </linearGradient>
+    <path id="error-b" d="M9,5 L11,5 L11,11 L9,11 L9,5 Z M9,13 L11,13 L11,15 L9,15 L9,13 Z"/>
+    <filter id="error-a" width="650%" height="210%" x="-275%" y="-35%" filterUnits="objectBoundingBox">
+      <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 1   0 0 0 0 0.443137255   0 0 0 0 0.443137255  0 0 0 0.3 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <circle cx="10" cy="10" r="10" fill="#000" fill-opacity=".1"/>
+    <g transform="matrix(1 0 0 -1 0 20)">
+      <use fill="#000" filter="url(#error-a)" xlink:href="#error-b"/>
+      <use fill="url(#error-c)" xlink:href="#error-b"/>
+    </g>
+  </g>
+</svg>
