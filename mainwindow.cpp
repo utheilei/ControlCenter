@@ -18,6 +18,8 @@ MainWindow::MainWindow(QWidget *parent)
     ,m_mainWidget(new QStackedWidget(this))
     ,m_titlesWidget(new TitlesWidget(this))
 {
+    listwidget->init();
+
     m_titlebar = this->titlebar();
     m_titlebar->setDisableFlags(Qt::WindowMinimizeButtonHint
                               | Qt::WindowMaximizeButtonHint

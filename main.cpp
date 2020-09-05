@@ -1,8 +1,7 @@
 #include <DApplication>
 #include <DWidgetUtil>
 #include "mainwindow.h"
-#include "userwidget.h"
-#include "widgets/clockwidget.h"
+#include "widgets/iconwidget.h"
 
 DWIDGET_USE_NAMESPACE
 

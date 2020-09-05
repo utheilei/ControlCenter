@@ -16,10 +16,8 @@ ListWidget::ListWidget(QWidget *parent) : DListView(parent)
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-    itemModel = new QStandardItemModel;
-    setModel(itemModel);
-
-    init();
+    m_itemModel = new QStandardItemModel;
+    setModel(m_itemModel);
 }
 
 void ListWidget::init()
@@ -46,5 +44,10 @@ void ListWidget::init()
 void ListWidget::addItem(const QIcon &icon, const QString &text)
 {
     QStandardItem *account = new QStandardItem(icon,text);
-    itemModel->appendRow(account);
+    m_itemModel->appendRow(account);
+}
+
+QStandardItemModel *ListWidget::itemModel() const
+{
+    return m_itemModel;
 }

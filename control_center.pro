@@ -35,7 +35,9 @@ SOURCES += \
     widgets/iwindow.cpp \
     widgets/clockwidget.cpp \
     datetimewidget.cpp \
-    widgets/displaytime.cpp
+    widgets/displaytime.cpp \
+    widgets/iconwidget.cpp \
+    iconthemewidget.cpp
 
 RESOURCES +=         resources.qrc
 
@@ -66,7 +68,9 @@ HEADERS += \
     widgets/iwindow.h \
     widgets/clockwidget.h \
     datetimewidget.h \
-    widgets/displaytime.h
+    widgets/displaytime.h \
+    widgets/iconwidget.h \
+    iconthemewidget.h
 
 TRANSLATIONS = control_center_zh_CN.ts
 

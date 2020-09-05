@@ -1,7 +1,6 @@
 #ifndef LISTWIDGET_H
 #define LISTWIDGET_H
 
-#include <QWidget>
 #include <DListView>
 
 DWIDGET_USE_NAMESPACE
@@ -12,16 +11,18 @@ class ListWidget : public DListView
 public:
     explicit ListWidget(QWidget *parent = nullptr);
 
-    void init();
+    virtual void init();
 
     void addItem(const QIcon &icon, const QString &text);
+
+    QStandardItemModel *itemModel() const;
 
 signals:
 
 public slots:
 
 private:
-    QStandardItemModel *itemModel = Q_NULLPTR;
+    QStandardItemModel *m_itemModel = Q_NULLPTR;
 
 };
 

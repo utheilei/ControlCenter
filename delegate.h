@@ -2,7 +2,9 @@
 #define DELEGATE_H
 
 #include <QStyledItemDelegate>
-#include <dstyleditemdelegate.h>
+#include <DStyledItemDelegate>
+
+DWIDGET_USE_NAMESPACE
 
 class Delegate : public QStyledItemDelegate
 {
@@ -15,10 +17,6 @@ public:
 
     // set item size
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
-
-signals:
-
-public slots:
 };
 
 class StyledDelegate : public QStyledItemDelegate
@@ -33,12 +31,18 @@ public:
     // set item size
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
 
-signals:
-
-public slots:
-
 private:
     int radius = 20;
+};
+
+class NormalDelegate : public DStyledItemDelegate
+{
+    Q_OBJECT
+public:
+    explicit NormalDelegate(QAbstractItemView *parent = nullptr);
+
+protected:
+    void initStyleOption(QStyleOptionViewItem *option, const QModelIndex &index) const;
 };
 
 #endif // DELEGATE_H

@@ -3,7 +3,9 @@
 #include <DStyle>
 
 #include <QPainter>
+#include <QApplication>
 #include <QDebug>
+#include <DApplicationHelper>
 
 DWIDGET_USE_NAMESPACE
 
@@ -147,4 +149,21 @@ QSize StyledDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelI
     Q_UNUSED(option)
 
     return index.data(Qt::SizeHintRole).toSize();
+}
+
+NormalDelegate::NormalDelegate(QAbstractItemView *parent) : DStyledItemDelegate(parent)
+{
+
+}
+
+void NormalDelegate::initStyleOption(QStyleOptionViewItem *option, const QModelIndex &index) const
+{
+    QBrush brush = DApplicationHelper::instance()->palette(option->widget).brush(DPalette::ItemBackground);
+    DStyledItemDelegate::initStyleOption(option, index);
+
+    if (option->state & DStyle::State_Enabled) {
+        if (option->state & DStyle::State_Selected) {
+            option->backgroundBrush = brush;
+        }
+    }
 }

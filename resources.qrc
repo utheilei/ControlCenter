@@ -85,5 +85,41 @@
         <file>icons/deepin/builtin/dark/icons/dcc_lock_16px.svg</file>
         <file>icons/deepin/builtin/light/icons/dcc_acount_16px.svg</file>
         <file>icons/deepin/builtin/light/icons/dcc_lock_16px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_browser_bloom_48px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_browser_class_48px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_browser_dark_48px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_control_bloom_48px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_control_class_48px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_control_dark_48px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_file_bloom_48px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_file_class_48px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_file_dark_48px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_movie_bloom_48px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_movie_class_48px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_movie_dark_48px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_music_bloom_48px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_music_class_48px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_music_dark_48px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_pixmap_dark_48px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_pixmap_class_48px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_pixmap_bloom_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_browser_bloom_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_browser_class_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_browser_dark_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_control_class_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_control_bloom_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_control_dark_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_file_bloom_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_file_class_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_file_dark_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_movie_bloom_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_movie_class_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_movie_dark_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_music_bloom_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_music_class_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_music_dark_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_pixmap_bloom_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_pixmap_class_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_pixmap_dark_48px.svg</file>
     </qresource>
 </RCC>

@@ -1,5 +1,6 @@
 #include "personalizationwidget.h"
 #include "commonwidget.h"
+#include "iconthemewidget.h"
 
 #include <DVerticalLine>
 #include <QBoxLayout>
@@ -50,9 +51,16 @@ void PersonalizationWidget::initLeftWidget()
 void PersonalizationWidget::initRigthWidget()
 {
     stackedWidget = new QStackedWidget(this);
+
     CommonWidget *commonWidget = new CommonWidget(this);
     stackedWidget->addWidget(commonWidget);
     listWidget.insert(ConmmonItem,commonWidget);
+
+    IconThemeWidget *iconThemeWidget = new IconThemeWidget(this);
+    iconThemeWidget->init();
+    stackedWidget->addWidget(iconThemeWidget);
+    listWidget.insert(IconItem,iconThemeWidget);
+
     stackedWidget->setCurrentIndex(0);
 }
 
@@ -65,5 +73,5 @@ void PersonalizationWidget::onChanged(const QModelIndex &index)
 {
     QWidget *widget = listWidget.value(index.data(Qt::UserRole+1000).toInt());
     stackedWidget->setCurrentWidget(widget);
-    qDebug() << index.data(Qt::UserRole+1000).toInt() << index.data().toString();
+    qDebug() << index.data(Qt::UserRole+1000).toInt() << widget;
 }
