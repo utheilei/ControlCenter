@@ -1,76 +1,57 @@
 /*
- * Copyright (C) 2011 ~ 2018 Deepin Technology Co., Ltd.
- *
- * Author:     sbw <sbw@sbw.so>
- *             kirigaya <kirigaya@mkacg.com>
- *             Hualet <mr.asianwang@gmail.com>
- *
- * Maintainer: sbw <sbw@sbw.so>
- *             kirigaya <kirigaya@mkacg.com>
- *             Hualet <mr.asianwang@gmail.com>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+* Copyright (C) 2020 ~ 2025 Uniontech Software Technology Co.,Ltd.
+*
+* Author:     helei <helei@uniontech.com>
+*
+* Maintainer: helei <helei@uniontech.com>
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
-#include "avatarwidget.h"
+#include "ArrowCircleButton.h"
 
-#include <QDebug>
-#include <QUrl>
 #include <QPainter>
 #include <QPaintEvent>
-#include <QVBoxLayout>
-#include <QApplication>
-#include <QRect>
-#include <QColor>
 
-AvatarWidget::AvatarWidget(QPixmap pixmap, QWidget *parent)
-    : QLabel(parent),
-      m_hover(false),
-      m_deleable(false),
-      m_selected(false),
-      m_arrowed(false)
+ArrowCircleButton::ArrowCircleButton(const QPixmap &pixmap, QWidget *parent)
+    : QWidget(parent)
 {
-    QVBoxLayout *mainLayout = new QVBoxLayout;
-    mainLayout->setMargin(0);
-    mainLayout->setSpacing(0);
-
-    setLayout(mainLayout);
     setFixedSize(PIX_SIZE, PIX_SIZE);
-    m_avatar = pixmap;
+    m_pixmap = pixmap;
 }
 
-void AvatarWidget::setPixmap(QPixmap pixmap)
+void ArrowCircleButton::setPixmap(const QPixmap &pixmap)
 {
-    if(m_avatar != pixmap){
-        m_avatar = pixmap;
+    if(m_pixmap != pixmap){
+        m_pixmap = pixmap;
         update();
     }
 }
 
-void AvatarWidget::setSelected(const bool selected)
+void ArrowCircleButton::setSelected(const bool selected)
 {
     m_selected = selected;
     update();
 }
 
-void AvatarWidget::setArrowed(const bool arrowed)
+void ArrowCircleButton::setArrowed(const bool arrowed)
 {
     m_arrowed = arrowed;
     update();
 }
 
-void AvatarWidget::mouseReleaseEvent(QMouseEvent *e)
+void ArrowCircleButton::mouseReleaseEvent(QMouseEvent *e)
 {
     if (rect().contains(e->pos())){
         setArrowed(!m_arrowed);
@@ -80,7 +61,7 @@ void AvatarWidget::mouseReleaseEvent(QMouseEvent *e)
     QWidget::mouseReleaseEvent(e);
 }
 
-void AvatarWidget::paintEvent(QPaintEvent *e)
+void ArrowCircleButton::paintEvent(QPaintEvent *e)
 {
     QPainterPath painterPath;
     painterPath.addEllipse(QRect(0, 0, width(), height()));
@@ -88,7 +69,7 @@ void AvatarWidget::paintEvent(QPaintEvent *e)
     QPainter painter(this);
     painter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing);
     painter.setClipPath(painterPath);
-    painter.drawPixmap(e->rect(), m_avatar);
+    painter.drawPixmap(e->rect(), m_pixmap);
 
     if (m_selected) {
         QPen pen(Qt::transparent);
@@ -155,27 +136,14 @@ void AvatarWidget::paintEvent(QPaintEvent *e)
     QWidget::paintEvent(e);
 }
 
-void AvatarWidget::enterEvent(QEvent *)
+void ArrowCircleButton::enterEvent(QEvent *)
 {
     m_hover = true;
     update();
 }
 
-void AvatarWidget::leaveEvent(QEvent *)
+void ArrowCircleButton::leaveEvent(QEvent *)
 {
     m_hover = false;
     update();
 }
-
-//void AvatarWidget::resizeEvent(QResizeEvent *event)
-//{
-//    QWidget::resizeEvent(event);
-
-//    const auto ratio = devicePixelRatioF();
-
-//    QUrl url(m_avatarPath);
-//    m_avatar = QPixmap(url.toLocalFile()).scaled(size() * ratio, Qt::KeepAspectRatio, Qt::FastTransformation);
-//    m_avatar.setDevicePixelRatio(ratio);
-
-//    update();
-//}

@@ -8,7 +8,7 @@ ClockWidget::ClockWidget(QWidget *parent) : QWidget(parent)
 {
     m_time = new QTimer(this);
 
-    connect(m_time,&QTimer::timeout,[=](){
+    connect(m_time, &QTimer::timeout, [=](){
         this->update();
     });
 

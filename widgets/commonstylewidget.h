@@ -19,39 +19,41 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-// 设置全名输入编辑框控件
+// 绘制任意角为圆角的窗口
 
-#ifndef FULLNAMEEDIT_H
-#define FULLNAMEEDIT_H
+#ifndef COMMONSTYLEWIDGET_H
+#define COMMONSTYLEWIDGET_H
 
-#include <DIconButton>
-#include <DLabel>
+#include <QWidget>
 
-DWIDGET_USE_NAMESPACE
-
-class QHBoxLayout;
-
-class FullNameEdit : public QWidget
+class CommonStyleWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit FullNameEdit(QWidget *parent = nullptr);
+    // 窗口类型
+    typedef enum BackgroundType {
+        LeftTop = 0,
+        RightTop,
+        LeftBottom,
+        RightBottom,
+        Top,
+        Bottom,
+        Left,
+        Right,
+        All
+    } BackgroundType;
+
+    explicit CommonStyleWidget(BackgroundType type = BackgroundType::All, QWidget *parent = nullptr);
+
+    void setBackgroundType(BackgroundType type);
+
+    BackgroundType currentBackgroundType();
 
 protected:
-    bool eventFilter(QObject *target, QEvent *event) Q_DECL_OVERRIDE;
-
-signals:
-    void nameChanged(QString &name);
-
-public slots:
-    void changeWidget();
-    void loseFocus();
+    void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
 
 private:
-    DIconButton *m_edit = Q_NULLPTR;
-    DLabel *m_label = Q_NULLPTR;
-    QLineEdit *m_lineEdit = Q_NULLPTR;
-    QHBoxLayout *m_layout = Q_NULLPTR;
+    BackgroundType m_type = BackgroundType::All;
 };
 
-#endif // FULLNAMEEDIT_H
+#endif // COMMONSTYLEWIDGET_H

@@ -5,6 +5,10 @@
 #include "personalizationwidget.h"
 #include "titleswidget.h"
 #include "datetimewidget.h"
+#include "modules/displaywidget.h"
+#include "modules/defappwidget.h"
+#include "modules/networkwidget.h"
+#include "modules/soundwidget.h"
 
 #include <DMenu>
 #include <DFrame>
@@ -81,9 +85,25 @@ void MainWindow::initContent()
     m_stackedWidget->addWidget(nwaWidget);
     m_listWidget.insert(tr("cloudsync"),nwaWidget);
 
+    DisplayWidget *displayWidget = new DisplayWidget(this);
+    m_stackedWidget->addWidget(displayWidget);
+    m_listWidget.insert(tr("display"), displayWidget);
+
+    DefAppWidget *defAppWidget = new DefAppWidget(this);
+    m_stackedWidget->addWidget(defAppWidget);
+    m_listWidget.insert(tr("defapp"), defAppWidget);
+
     PersonalizationWidget *personalizationWidget = new PersonalizationWidget(this);
     m_stackedWidget->addWidget(personalizationWidget);
     m_listWidget.insert(tr("personalization"),personalizationWidget);
+
+    NetworkWidget *networkWidget = new NetworkWidget(this);
+    m_stackedWidget->addWidget(networkWidget);
+    m_listWidget.insert(tr("network"), networkWidget);
+
+    SoundWidget *soundWidget = new SoundWidget(this);
+    m_stackedWidget->addWidget(soundWidget);
+    m_listWidget.insert(tr("sound"), soundWidget);
 
     DateTimeWidget *dateTimeWidget = new DateTimeWidget(this);
     m_stackedWidget->addWidget(dateTimeWidget);

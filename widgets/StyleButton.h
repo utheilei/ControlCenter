@@ -19,39 +19,28 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-// 设置全名输入编辑框控件
+//鼠标hover灰色背景，以及点击后高亮
 
-#ifndef FULLNAMEEDIT_H
-#define FULLNAMEEDIT_H
+#ifndef STYLEBUTTON_H
+#define STYLEBUTTON_H
 
-#include <DIconButton>
-#include <DLabel>
+#include <DPushButton>
+#include <QEvent>
 
 DWIDGET_USE_NAMESPACE
 
-class QHBoxLayout;
-
-class FullNameEdit : public QWidget
+class StyleButton : public DPushButton
 {
-    Q_OBJECT
 public:
-    explicit FullNameEdit(QWidget *parent = nullptr);
+    StyleButton(const QString text, QWidget *parent = Q_NULLPTR);
 
 protected:
-    bool eventFilter(QObject *target, QEvent *event) Q_DECL_OVERRIDE;
-
-signals:
-    void nameChanged(QString &name);
-
-public slots:
-    void changeWidget();
-    void loseFocus();
+    void enterEvent(QEvent *e) Q_DECL_OVERRIDE;
+    void leaveEvent(QEvent *e) Q_DECL_OVERRIDE;
+    void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
 
 private:
-    DIconButton *m_edit = Q_NULLPTR;
-    DLabel *m_label = Q_NULLPTR;
-    QLineEdit *m_lineEdit = Q_NULLPTR;
-    QHBoxLayout *m_layout = Q_NULLPTR;
+    bool m_isEnter = false;
 };
 
-#endif // FULLNAMEEDIT_H
+#endif // STYLEBUTTON_H

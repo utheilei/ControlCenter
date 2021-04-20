@@ -121,5 +121,11 @@
         <file>icons/deepin/builtin/light/icons/dcc_pixmap_bloom_48px.svg</file>
         <file>icons/deepin/builtin/light/icons/dcc_pixmap_class_48px.svg</file>
         <file>icons/deepin/builtin/light/icons/dcc_pixmap_dark_48px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_close_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_close_48px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_collapse_48px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_expand_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_collapse_48px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_expand_48px.svg</file>
     </qresource>
 </RCC>

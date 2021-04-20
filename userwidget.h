@@ -7,10 +7,11 @@
 DWIDGET_USE_NAMESPACE
 
 class ListIconView;
-class AvatarWidget;
+class ArrowCircleButton;
 class FullNameEdit;
 class SettingsGroup;
 class QVBoxLayout;
+class SettingsItem;
 class UserWidget : public QWidget
 {
     Q_OBJECT
@@ -33,7 +34,7 @@ public slots:
 private:
     SettingsGroup *settingsGroup = Q_NULLPTR;
     FullNameEdit *fullNameEdit = Q_NULLPTR;
-    AvatarWidget *btn = Q_NULLPTR;
+    ArrowCircleButton *btn = Q_NULLPTR;
     ListIconView *accoutView = Q_NULLPTR;
 };
 

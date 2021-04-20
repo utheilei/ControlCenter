@@ -1,5 +1,5 @@
 #include "userwidget.h"
-#include "avatarwidget.h"
+#include "ArrowCircleButton.h"
 #include "settingsgroup.h"
 #include "settingsitem.h"
 #include "fullnameedit.h"
@@ -36,11 +36,9 @@ UserWidget::UserWidget(QWidget *parent) : QWidget(parent)
     contentLayout->setSpacing(0);
     contentLayout->setContentsMargins(0, 0, 6, 0);
     scrollArea->setWidget(tw);
-    //    //QColor color = pa.lightLively().color();
-    //    //pa.setColor(QPalette::Button, color);
     initWidget(contentLayout);
 
-    connect(btn,static_cast<void (AvatarWidget::*)()>(&AvatarWidget::clicked),this,&UserWidget::showAccoutView);
+    connect(btn,static_cast<void (ArrowCircleButton::*)()>(&ArrowCircleButton::clicked),this,&UserWidget::showAccoutView);
     connect(accoutView,&ListIconView::currentIconPath,this,&UserWidget::setUserPixmap);
 }
 
@@ -58,7 +56,7 @@ void UserWidget::initWidget(QVBoxLayout *layout)
     accoutView->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
     accoutView->hide();
 
-    btn = new AvatarWidget(QPixmap(":/images/images3.png"),this);
+    btn = new ArrowCircleButton(QPixmap(":/images/images3.png"),this);
     btn->setFixedSize(80,80);
 
     DLabel *label = new DLabel(this);

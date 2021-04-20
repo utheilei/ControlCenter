@@ -19,39 +19,35 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-// 设置全名输入编辑框控件
+//通用的圆角窗口
 
-#ifndef FULLNAMEEDIT_H
-#define FULLNAMEEDIT_H
+#ifndef SETTINGWIDGET_H
+#define SETTINGWIDGET_H
 
-#include <DIconButton>
-#include <DLabel>
+#include <DGraphicsClipEffect>
+
+#include <QFrame>
 
 DWIDGET_USE_NAMESPACE
 
-class QHBoxLayout;
-
-class FullNameEdit : public QWidget
+class QVBoxLayout;
+class SettingWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit FullNameEdit(QWidget *parent = nullptr);
+    explicit SettingWidget(QWidget *parent = nullptr);
+    ~SettingWidget() Q_DECL_OVERRIDE;
+
+    void setWidget(QWidget *widget);
+    QWidget *contentWidget() const;
 
 protected:
-    bool eventFilter(QObject *target, QEvent *event) Q_DECL_OVERRIDE;
-
-signals:
-    void nameChanged(QString &name);
-
-public slots:
-    void changeWidget();
-    void loseFocus();
+    bool eventFilter(QObject *watched, QEvent *event) Q_DECL_OVERRIDE;
 
 private:
-    DIconButton *m_edit = Q_NULLPTR;
-    DLabel *m_label = Q_NULLPTR;
-    QLineEdit *m_lineEdit = Q_NULLPTR;
-    QHBoxLayout *m_layout = Q_NULLPTR;
+    DGraphicsClipEffect *m_clipEffectWidget;
+    QFrame *m_contentWidget;
+    QVBoxLayout *m_layout;
+    QWidget *m_widget = Q_NULLPTR;
 };
-
-#endif // FULLNAMEEDIT_H
+#endif // SETTINGWIDGET_H

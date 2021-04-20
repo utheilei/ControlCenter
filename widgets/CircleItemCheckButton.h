@@ -1,5 +1,5 @@
 /*
-* Copyright (C) 2019 ~ 2020 Uniontech Software Technology Co.,Ltd.
+* Copyright (C) 2020 ~ 2025 Uniontech Software Technology Co.,Ltd.
 *
 * Author:     helei <helei@uniontech.com>
 *
@@ -19,39 +19,23 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-// 设置全名输入编辑框控件
+// 圆形图片按钮
 
-#ifndef FULLNAMEEDIT_H
-#define FULLNAMEEDIT_H
+#ifndef CIRCLEITEMCHECKBUTTON_H
+#define CIRCLEITEMCHECKBUTTON_H
 
-#include <DIconButton>
-#include <DLabel>
+#include <QPushButton>
 
-DWIDGET_USE_NAMESPACE
-
-class QHBoxLayout;
-
-class FullNameEdit : public QWidget
+class CircleItemCheckButton : public QPushButton
 {
     Q_OBJECT
 public:
-    explicit FullNameEdit(QWidget *parent = nullptr);
+    explicit CircleItemCheckButton(QWidget *parent = Q_NULLPTR);
+
+    QPixmap pixmapToRound(const QPixmap &pixmap);
 
 protected:
-    bool eventFilter(QObject *target, QEvent *event) Q_DECL_OVERRIDE;
-
-signals:
-    void nameChanged(QString &name);
-
-public slots:
-    void changeWidget();
-    void loseFocus();
-
-private:
-    DIconButton *m_edit = Q_NULLPTR;
-    DLabel *m_label = Q_NULLPTR;
-    QLineEdit *m_lineEdit = Q_NULLPTR;
-    QHBoxLayout *m_layout = Q_NULLPTR;
+    void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
 };
 
-#endif // FULLNAMEEDIT_H
+#endif // CIRCLEITEMCHECKBUTTON_H

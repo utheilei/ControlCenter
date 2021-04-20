@@ -1,6 +1,5 @@
 #include "newaccout.h"
 #include "circlebutton.h"
-#include "avatardel.h"
 #include "circleview.h"
 #include <DLabel>
 #include <DFloatingButton>
@@ -19,10 +18,6 @@ NewAccout::NewAccout(QWidget *parent) : QWidget(parent)
 
     DLabel *label = new DLabel(this);
     label->setText(tr("新账户"));
-
-    //DFloatingButton *btn4 = new DFloatingButton(DStyle::SP_IncreaseElement,this);
-    //btn4->setFixedSize(40,40);
-    //btn4->setBackgroundRole(QPalette::Button);
 
     circleWidget = new circleView(this);
     initAccoutWidget();

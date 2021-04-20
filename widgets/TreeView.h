@@ -1,9 +1,9 @@
 /*
 * Copyright (C) 2019 ~ 2020 Uniontech Software Technology Co.,Ltd.
 *
-* Author:     helei <helei@uniontech.com>
+* Author:     waleon <wanglianga@uniontech.com>
 *
-* Maintainer: helei <helei@uniontech.com>
+* Maintainer: waleon <wanglianga@uniontech.com>
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -19,39 +19,37 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-// 设置全名输入编辑框控件
+// 视图，用于显示表格数据
 
-#ifndef FULLNAMEEDIT_H
-#define FULLNAMEEDIT_H
+#ifndef TREE_VIEW_H
+#define TREE_VIEW_H
 
-#include <DIconButton>
-#include <DLabel>
+#include <DTreeView>
+
+class TreeViewPrivate;
 
 DWIDGET_USE_NAMESPACE
 
-class QHBoxLayout;
-
-class FullNameEdit : public QWidget
+class TreeView : public DTreeView
 {
     Q_OBJECT
+
 public:
-    explicit FullNameEdit(QWidget *parent = nullptr);
+    explicit TreeView(QWidget *parent = Q_NULLPTR);
+    ~TreeView() Q_DECL_OVERRIDE;
+
+    // 更新控件位置
+    void updateContent();
 
 protected:
-    bool eventFilter(QObject *target, QEvent *event) Q_DECL_OVERRIDE;
-
-signals:
-    void nameChanged(QString &name);
-
-public slots:
-    void changeWidget();
-    void loseFocus();
+    void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
+    void drawBranches(QPainter *painter, const QRect &rect, const QModelIndex &index) const Q_DECL_OVERRIDE;
 
 private:
-    DIconButton *m_edit = Q_NULLPTR;
-    DLabel *m_label = Q_NULLPTR;
-    QLineEdit *m_lineEdit = Q_NULLPTR;
-    QHBoxLayout *m_layout = Q_NULLPTR;
+    Q_DISABLE_COPY(TreeView)
+    Q_DECLARE_PRIVATE(TreeView)
+
+    TreeViewPrivate *d_ptr = Q_NULLPTR;
 };
 
-#endif // FULLNAMEEDIT_H
+#endif // TREE_VIEW_H
