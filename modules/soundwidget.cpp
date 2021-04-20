@@ -18,19 +18,19 @@ SoundWidget::SoundWidget(QWidget *parent) : QWidget(parent)
     m_view->setModel(m_model);
 
     QVector<QVariant> data = {"frist"};
-    QVector<QVariant> data1 = {"secend"};
-    for (int i=0;i<5;i++) {
+    QVector<QVariant> secendData = {"secend"};
+    for (int i = 0; i < 5; i++) {
         TreeItem *item = new TreeItem(data);
         item->setIcon(QIcon::fromTheme("controlcenter"));
         TreeItem *chidItem = new TreeItem(data, item);
         chidItem->setIcon(QIcon::fromTheme("controlcenter"));
-        TreeItem *chidItem3 = new TreeItem(data, chidItem);
-        chidItem3->setIcon(QIcon::fromTheme("controlcenter"));
-        TreeItem *chidItem1 = new TreeItem(data1, item);
-        chidItem1->setIcon(QIcon::fromTheme("controlcenter"));
+        TreeItem *thirdChidItem = new TreeItem(data, chidItem);
+        thirdChidItem->setIcon(QIcon::fromTheme("controlcenter"));
+        TreeItem *secendChidItem = new TreeItem(secendData, item);
+        secendChidItem->setIcon(QIcon::fromTheme("controlcenter"));
         item->appendChild(chidItem);
-        chidItem->appendChild(chidItem3);
-        item->appendChild(chidItem1);
+        chidItem->appendChild(thirdChidItem);
+        item->appendChild(secendChidItem);
         m_model->insertItem(i, item);
     }
 
