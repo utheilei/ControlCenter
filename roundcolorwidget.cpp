@@ -92,7 +92,6 @@ void RoundColorWidget::paintEvent(QPaintEvent *event)
     QPainterPath path;
     path.addEllipse(r);
     painter.setPen(Qt::NoPen);
-    painter.drawPath(path);
     painter.fillPath(path, QBrush(m_color));
 
     if (m_isSelected) {

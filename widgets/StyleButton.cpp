@@ -69,7 +69,6 @@ void StyleButton::paintEvent(QPaintEvent *event)
 
     QStyleOptionButton btn;
     initStyleOption(&btn);
-    qDebug() << btn.palette;
     QStylePainter stylePainter(this);
     stylePainter.drawControl(DStyle::CE_PushButton, btn);
 }
